@@ -13,8 +13,13 @@ public class InvestmentCalculator {
      * @param ratePerPeriod - The percentage rate of return
      * @param numberOfPeriods - The amount of periods the calculation should be performed
      * @return The future amount
+     * @throws  IllegalArgumentException if the numberOfPeriods is less than 0
      */
     public double getFutureValue(double paymentPerPeriod, double ratePerPeriod, int numberOfPeriods) {
+        if (numberOfPeriods < 0) {
+            throw new IllegalArgumentException("The numberOfPeriods must be greater than 0.");
+        }
+
         if ( ratePerPeriod == 0) {
            return  paymentPerPeriod * numberOfPeriods;
         }
