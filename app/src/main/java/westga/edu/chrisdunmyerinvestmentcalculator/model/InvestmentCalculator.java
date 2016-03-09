@@ -15,6 +15,10 @@ public class InvestmentCalculator {
      * @return The future amount
      */
     public double getFutureValue(double paymentPerPeriod, double ratePerPeriod, int numberOfPeriods) {
+        if ( ratePerPeriod == 0) {
+           return  paymentPerPeriod * numberOfPeriods;
+        }
+
         double numerator = 1;
         for (int i=0; i<numberOfPeriods; i++) {
             numerator = (1 + (ratePerPeriod/100)) * numerator;
