@@ -47,9 +47,15 @@ public class TestInvestmentCalculatorGetFutureValue {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testGetFutureValueWhenNumberOfPaymentPeriodsIs0() {
+     public void testGetFutureValueWhenNumberOfPaymentPeriodsIs0() {
         InvestmentCalculator calculator = new InvestmentCalculator();
         calculator.getFutureValue(10000, 5, -1);
+    }
+
+    @Test
+    public void testGetFutureValueWhenPaymentPerPeriodAndRatePerPeriodAreNotWholeNumbers() {
+        InvestmentCalculator calculator = new InvestmentCalculator();
+        assertEquals(11384.47, calculator.getFutureValue(957.54, 3.789, 10), .1);
     }
 
 
