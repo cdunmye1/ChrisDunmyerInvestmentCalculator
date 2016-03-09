@@ -28,4 +28,27 @@ public class TestInvestmentCalculatorGetFutureValue {
         assertEquals(10000, calculator.getFutureValue(1000, 0, 10), .1);
     }
 
+    @Test
+    public void testGetFutureValueWhenPaymentPerPeriodIsZero() {
+        InvestmentCalculator calculator = new InvestmentCalculator();
+        assertEquals(0, calculator.getFutureValue(0, 5, 10), .1);
+    }
+
+    @Test
+    public void testGetFutureValueWhenPaymentPerPeriodIsNegative() {
+        InvestmentCalculator calculator = new InvestmentCalculator();
+        assertEquals(-125778.93, calculator.getFutureValue(-10000, 5, 10), .1);
+    }
+
+    @Test
+     public void testGetFutureValueWhenRatePerPeriodIsNegative() {
+        InvestmentCalculator calculator = new InvestmentCalculator();
+        assertEquals(80252.61, calculator.getFutureValue(10000, -5, 10), .1);
+    }
+
+    @Test
+    public void testGetFutureValueWhenBothPaymentPerPeriodAndRatePerPeriodIsNegative() {
+        InvestmentCalculator calculator = new InvestmentCalculator();
+        assertEquals(-80252.61, calculator.getFutureValue(-10000, -5, 10), .1);
+    }
 }
