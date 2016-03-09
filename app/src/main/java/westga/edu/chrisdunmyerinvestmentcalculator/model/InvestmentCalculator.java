@@ -23,3 +23,4 @@ public class InvestmentCalculator {
         return paymentPerPeriod * (numerator / (ratePerPeriod/100));
     }
 }
+
