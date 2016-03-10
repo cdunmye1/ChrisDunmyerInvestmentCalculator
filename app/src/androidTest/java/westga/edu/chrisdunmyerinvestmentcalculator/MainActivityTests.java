@@ -35,63 +35,64 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
     }
 
     public void testResultTextViewShowsErrorWhenPaymentIsProvidedButRateIsEmpty() {
-        MainActivity activity = getActivity();
+        MainActivity activity = this.passPayment(getActivity(), "0");
+        //MainActivity activity = getActivity();
         Button calculateButton =
                 (Button) activity.findViewById(R.id.calculateButton);
-
-        // type name in text paymentEditText
-        final EditText paymentEditText =
+        EditText paymentEditText =
                 (EditText) activity.findViewById(R.id.paymentEditText);
-        getInstrumentation().runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                paymentEditText.requestFocus();
-            }
-        });
-
-        getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("0");
+        //paymentEditText.setText("0");
         TouchUtils.clickView(this, calculateButton);
+
         TextView resultsTextView =
                 (TextView) activity.findViewById(R.id.resultTextView);
         assertEquals("Rate Required!", resultsTextView.getText().toString());
     }
 
     public void testResultTextViewShowsErrorWhenPaymentAndRateAreProvidedButNumberOfPeriodsIsEmpty() {
-        MainActivity activity = getActivity();
+        MainActivity activity = this.passPayment(getActivity(), "0");
         Button calculateButton =
                 (Button) activity.findViewById(R.id.calculateButton);
+        activity = this.passRate(activity, "0");
+        TouchUtils.clickView(this, calculateButton);
+        TextView resultsTextView =
+                (TextView) activity.findViewById(R.id.resultTextView);
+        assertEquals("Periods Required!", resultsTextView.getText().toString());
+    }
 
-        // type number in  paymentEditText
+    private MainActivity passPayment(MainActivity activity, final String stringArgument) {
         final EditText paymentEditText =
                 (EditText) activity.findViewById(R.id.paymentEditText);
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                paymentEditText.requestFocus();
+                paymentEditText.setText(stringArgument);
             }
         });
+        return activity;
+    }
 
-        getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("0");
-
-        // type number in  rateEditText
+    private MainActivity passRate(MainActivity activity, final String stringArgument) {
         final EditText rateEditText =
                 (EditText) activity.findViewById(R.id.rateEditText);
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                rateEditText.requestFocus();
+                rateEditText.setText(stringArgument);
             }
         });
+        return activity;
+    }
 
-        getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("0");
-
-
-        TouchUtils.clickView(this, calculateButton);
-        TextView resultsTextView =
-                (TextView) activity.findViewById(R.id.resultTextView);
-        assertEquals("Periods Required!", resultsTextView.getText().toString());
+    private MainActivity passPeriod(MainActivity activity, final String stringArgument) {
+        final EditText numOfPeriodsEditText =
+                (EditText) activity.findViewById(R.id.numOfPeriodsEditText);
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                numOfPeriodsEditText.setText(stringArgument);
+            }
+        });
+        return activity;
     }
 }
