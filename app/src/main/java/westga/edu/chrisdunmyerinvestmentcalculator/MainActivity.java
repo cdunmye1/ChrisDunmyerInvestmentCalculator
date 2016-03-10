@@ -65,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (paymentEditText.getText().toString().isEmpty()) {
             resultTextView.setText("Payment Required!");
+            return;
+        }
+
+        if (rateEditText.getText().toString().isEmpty()) {
+            resultTextView.setText("Rate Required!");
+            return;
         }
     }
 }
