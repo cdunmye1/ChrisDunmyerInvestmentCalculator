@@ -57,4 +57,41 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         assertEquals("Rate Required!", resultsTextView.getText().toString());
     }
 
+    public void testResultTextViewShowsErrorWhenPaymentAndRateAreProvidedButNumberOfPeriodsIsEmpty() {
+        MainActivity activity = getActivity();
+        Button calculateButton =
+                (Button) activity.findViewById(R.id.calculateButton);
+
+        // type number in  paymentEditText
+        final EditText paymentEditText =
+                (EditText) activity.findViewById(R.id.paymentEditText);
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                paymentEditText.requestFocus();
+            }
+        });
+
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("0");
+
+        // type number in  rateEditText
+        final EditText rateEditText =
+                (EditText) activity.findViewById(R.id.rateEditText);
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                rateEditText.requestFocus();
+            }
+        });
+
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("0");
+
+
+        TouchUtils.clickView(this, calculateButton);
+        TextView resultsTextView =
+                (TextView) activity.findViewById(R.id.resultTextView);
+        assertEquals("Periods Required!", resultsTextView.getText().toString());
+    }
 }

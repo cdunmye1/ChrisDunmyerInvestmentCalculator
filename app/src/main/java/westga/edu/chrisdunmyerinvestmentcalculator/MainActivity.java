@@ -72,5 +72,10 @@ public class MainActivity extends AppCompatActivity {
             resultTextView.setText("Rate Required!");
             return;
         }
+
+        if (numOfPeriodsEditText.getText().toString().isEmpty()) {
+            resultTextView.setText("Periods Required!");
+            return;
+        }
     }
 }
