@@ -60,6 +60,18 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         assertEquals("Periods Required!", resultsTextView.getText().toString());
     }
 
+    public void testResultIsCorrectWhenRegularNumbersArePassed() {
+        MainActivity activity = this.passPayment(getActivity(), "1000");
+        Button calculateButton =
+                (Button) activity.findViewById(R.id.calculateButton);
+        activity = this.passRate(activity, "3");
+        activity = this.passPeriods(activity, "10");
+        TouchUtils.clickView(this, calculateButton);
+        TextView resultsTextView =
+                (TextView) activity.findViewById(R.id.resultTextView);
+        assertEquals("$11,463.88", resultsTextView.getText().toString());
+    }
+
     private MainActivity passPayment(MainActivity activity, final String stringArgument) {
         final EditText paymentEditText =
                 (EditText) activity.findViewById(R.id.paymentEditText);
@@ -84,7 +96,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         return activity;
     }
 
-    private MainActivity passPeriod(MainActivity activity, final String stringArgument) {
+    private MainActivity passPeriods(MainActivity activity, final String stringArgument) {
         final EditText numOfPeriodsEditText =
                 (EditText) activity.findViewById(R.id.numOfPeriodsEditText);
         getInstrumentation().runOnMainSync(new Runnable() {

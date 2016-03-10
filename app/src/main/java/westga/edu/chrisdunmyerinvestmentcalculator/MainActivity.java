@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+
+import westga.edu.chrisdunmyerinvestmentcalculator.model.InvestmentCalculator;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -77,5 +81,10 @@ public class MainActivity extends AppCompatActivity {
             resultTextView.setText("Periods Required!");
             return;
         }
+
+        InvestmentCalculator calculator = new InvestmentCalculator();
+        double futureAmount = calculator.getFutureValue(Double.parseDouble(paymentEditText.getText().toString()), Double.parseDouble(rateEditText.getText().toString()), Integer.parseInt(numOfPeriodsEditText.getText().toString()));
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        resultTextView.setText(currency.format(futureAmount));
     }
 }
