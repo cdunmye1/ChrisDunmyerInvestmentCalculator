@@ -4,6 +4,7 @@ package westga.edu.chrisdunmyerinvestmentcalculator;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
 import android.test.TouchUtils;
+import android.widget.TextView;
 
 public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
     public MainActivityTests() {
@@ -19,6 +20,17 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         MainActivity activity = getActivity();
         Button calculateButton =
                 (Button) activity.findViewById(R.id.calculateButton);
-        assertEquals(false, calculateButton.isEnabled());
+        assertEquals(true, calculateButton.isEnabled());
     }
+
+    public void testResultTextViewShowsErrorWhenPaymentIsEmpty() {
+        MainActivity activity = getActivity();
+        Button calculateButton =
+                (Button) activity.findViewById(R.id.calculateButton);
+        TouchUtils.clickView(this, calculateButton);
+        TextView resultsTextView =
+                (TextView) activity.findViewById(R.id.resultTextView);
+        assertEquals("Payment Required!", resultsTextView.getText().toString());
+    }
+
 }

@@ -74,9 +74,10 @@
         android:layout_height="wrap_content"
         android:text="Calculate"
         android:id="@+id/calculateButton"
+        android:onClick="didTapCalculateButton"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/paymentEditText"
-        android:layout_toStartOf="@+id/paymentEditText" />
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -95,6 +96,6 @@
         android:text="Result"
         android:id="@+id/resultTextView"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/numOfPeriodsEditText"
-        android:layout_alignStart="@+id/numOfPeriodsEditText" />
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
 </RelativeLayout>

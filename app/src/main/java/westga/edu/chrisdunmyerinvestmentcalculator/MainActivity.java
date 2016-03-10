@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Button calculateButton = (Button) findViewById(R.id.calculateButton);
-        calculateButton.setEnabled(false);
     }
 
     @Override
@@ -51,5 +51,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void didTapCalculateButton(View view) {
+        EditText paymentEditText =
+                (EditText) findViewById(R.id.paymentEditText);
+        EditText rateEditText =
+                (EditText) findViewById(R.id.rateEditText);
+        EditText numOfPeriodsEditText =
+                (EditText) findViewById(R.id.numOfPeriodsEditText);
+        TextView resultTextView =
+                (TextView) findViewById(R.id.resultTextView);
+
+        if (paymentEditText.getText().toString().isEmpty()) {
+            resultTextView.setText("Payment Required!");
+        }
     }
 }
