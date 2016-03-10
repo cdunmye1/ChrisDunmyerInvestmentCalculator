@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Payment/Cash Flow"
+        android:text="@string/payment_text_view"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -28,7 +28,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
+        android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/paymentEditText"
         android:layout_alignBottom="@+id/textView"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Rate Per Period"
+        android:text="@string/rate_text_view"
         android:id="@+id/textView2"
         android:layout_marginTop="31dp"
         android:layout_below="@+id/paymentEditText"
@@ -51,7 +51,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
+        android:inputType="numberSigned|numberDecimal"
         android:ems="10"
         android:id="@+id/rateEditText"
         android:layout_alignTop="@+id/textView2"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="# of Periods"
+        android:text="@string/numofperiods_text_view"
         android:id="@+id/textView3"
         android:layout_marginTop="31dp"
         android:layout_below="@+id/rateEditText"
@@ -93,9 +93,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Result"
+        android:text=""
         android:id="@+id/resultTextView"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
+
 </RelativeLayout>

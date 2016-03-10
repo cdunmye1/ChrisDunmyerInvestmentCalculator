@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ChrisDunmyerInvestmentCalculator</string>
     <string name="action_settings">Settings</string>
+    <string name="payment_text_view">Payment/Cash Flow</string>
+    <string name="rate_text_view">Rate Per Period</string>
+    <string name="numofperiods_text_view"># of Periods</string>
 </resources>
