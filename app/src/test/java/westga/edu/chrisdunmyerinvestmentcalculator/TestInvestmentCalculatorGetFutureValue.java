@@ -57,6 +57,4 @@ public class TestInvestmentCalculatorGetFutureValue {
         InvestmentCalculator calculator = new InvestmentCalculator();
         assertEquals(11384.47, calculator.getFutureValue(957.54, 3.789, 10), .1);
     }
-
-
 }
